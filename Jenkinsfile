@@ -9,7 +9,7 @@ Pipeline{
 									Stage('Compile source code'){
 									steps{
 											withMaven(maven: 'MavenAmit')
-											sh 'mvn compile'
+											sh 'mvn clean compile'
 									     }
 									}
 									Stage('Test Source code'){
