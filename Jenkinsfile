@@ -3,7 +3,7 @@ Pipeline{
 					Stages{
 									Stage('SCM Checkout'){
 									steps{
-											git 'My git URL'
+											git 'https://github.com/amitkapadnisamit/maven-project'
 										 }
 									}
 									Stage('Compile source code'){
