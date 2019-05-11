@@ -1,5 +1,5 @@
 Pipeline{
-		any agent{
+		agent any{
 					Stages{
 									Stage('SCM Checkout'){
 									steps{
