@@ -1,35 +1,40 @@
-Pipeline{
-		agent any{
-					Stages{
-									Stage('SCM Checkout'){
-									steps{
-											git 'https://github.com/amitkapadnisamit/maven-project'
-										 }
-									}
-									Stage('Compile source code'){
-									steps{
-											withMaven(maven: 'MavenAmit')
-											sh 'mvn clean compile'
-									     }
-									}
-									Stage('Test Source code'){
-									steps{
-						                 withMaven(maven: 'MavenAmit')
-											sh 'mvn test'
-										 }
-									}
-									Stage('Create Pakage'){
-									steps{
-									     withMaven(maven: 'MavenAmit')
-											sh 'mvn package'
-									     }
-									}
-									Stage('Install package'){
-									steps{
-											withMaven(maven: 'MavenAmit')
-											sh 'mvn install'
-									     }
-									}
-						}
-				}
-		}
+pipeline {
+    agent any
+
+
+    stages {
+        stage('SCM Checkout'){
+          git 'https://github.com/amitkapadnisamit/maven-project'
+        }
+  }
+    {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'MavenAmit') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'MavenAmit') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('install Stage') {
+            steps {
+                withMaven(maven : 'MavenAmit') {
+                    sh 'mvn install'
+                }
+            }
+        }
+
+         
+}
+}
