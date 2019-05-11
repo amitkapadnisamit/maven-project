@@ -9,25 +9,25 @@ Pipeline{
 									}
 									Stage('Compile source code'){
 									steps{
-											withMaven(maven: 'LocalMaven')
+											withMaven(maven: 'MavenAmit')
 											sh 'mvn compile'
 									     }
 									}
 									Stage('Test Source code'){
 									steps{
-						                 withMaven(maven: 'LocalMaven')
+						                 withMaven(maven: 'MavenAmit')
 											sh 'mvn test'
 										 }
 									}
 									Stage('Create Pakage'){
 									steps{
-									     withMaven(maven: 'LocalMaven')
+									     withMaven(maven: 'MavenAmit')
 											sh 'mvn package'
 									     }
 									}
 									Stage('Install package'){
 									steps{
-											withMaven(maven: 'LocalMaven')
+											withMaven(maven: 'MavenAmit')
 											sh 'mvn install'
 									     }
 									}
