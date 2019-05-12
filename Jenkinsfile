@@ -7,6 +7,8 @@ pipeline {
           git 'https://github.com/amitkapadnisamit/maven-project'
         }
   }
+	
+	{
 	stage ('package') {
             steps {
                 withMaven(maven : 'MavenAmit') {
@@ -17,7 +19,10 @@ pipeline {
 
 	stage('SonarQube analysis') {
        withSonarQubeEnv('Sonar') {
+	       withMaven(maven : 'MavenAmit') {
       sh 'mvn clean package sonar:sonar'
     } 
+    }
   }
+}
 }
