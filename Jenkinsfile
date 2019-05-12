@@ -18,11 +18,13 @@ pipeline {
         }	
 
 	stage('SonarQube analysis') {
+		steps{
        withSonarQubeEnv('Sonar') {
 	       withMaven(maven : 'MavenAmit') {
       sh 'mvn clean package sonar:sonar'
     } 
     }
   }
+}
 }
 }
